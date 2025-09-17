@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>割り勘計算</title>
+</head>
+<body>
+    <h1>割り勘計算ツール</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">計算</button>
+    </form>
+    {% if result %}
+    <p>一人当たりの金額：{{ result }} 円</p>
+    {% endif %}
+    <p><a href="{% url 'index' %}">トップページへ戻る</a></p>
+</body>
+</html>

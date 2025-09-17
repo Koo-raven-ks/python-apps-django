@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>貯金シミュレーター</title>
+</head>
+
+<body>
+    <h1>貯金シミュレーター</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">計算</button>
+    </form>
+    {% if result %}
+    <p>貯金総額：{{ result }} 円</p>
+    {% endif %}
+    <p><a href="{% url 'index' %}">トップページへ戻る</a></p>
+</body>
+
+</html>

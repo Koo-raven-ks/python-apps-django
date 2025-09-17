@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>いろいろ計算ツール</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+    <h1>いろいろ計算ツール</h1>
+    <ul>
+        <li><a href="{% url 'reiwa' %}">令和→西暦変換</a></li>
+        <li><a href="{% url 'bmi' %}">BMI 計算</a></li>
+        <li><a href="{% url 'warikan' %}">割り勘計算</a></li>
+        <li><a href="{% url 'chokin' %}">貯金シミュレーション</a></li>
+        <li><a href="{% url 'calculator' %}">四則演算計算機</a></li>
+    </ul>
+</body>
+
+</html>
