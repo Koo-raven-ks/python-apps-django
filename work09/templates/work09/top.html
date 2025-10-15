@@ -1,10 +1,11 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="ja">
 
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'work09/css/top.css' %}">
     <title>toDoApp</title>
 </head>
 
@@ -13,10 +14,10 @@
     <h2>新しいタスクを追加</h2>
     <form method="post">
         {% csrf_token %}
-        <label for="taskName">タスク名</label><br>
-        <input type="text" name="taskName" id="taskName" size="50" required><br>
-        <label for="timeLimit">期限日</label><br>
-        <input type="datetime-local" name="timeLimit" id="timeLimit" required><br>
+        <label for="taskName" class="taskName">タスク名</label>
+        <input type="text" name="taskName" id="taskName" size="50" required>
+        <label for="timeLimit">期限日</label>
+        <input type="datetime-local" name="timeLimit" id="timeLimit" required>
         <button type="submit">登録</button>
     </form>
     <h2>TODO一覧</h2>

@@ -17,14 +17,14 @@ def todo(request):
             return render(request, "work09/top.html")
 
         # 🔹 正常時：データベースに保存
-        toDo.objects.create(taskName=taskName, timeLimit=timeLimit)
+        toDo.objects.create(title=taskName, timeLimit=timeLimit)
         messages.success(request, "メモを作成しました！")
         return redirect("work09:todo")
     return render(request, "work09/top.html", {"todos": todos})
 
 
-def todohs(reqest):
-    return render
+def todohs(request):
+    return render(request, "work09/todohs.html")
 
 
 def delete(request, todo_id):
@@ -34,3 +34,4 @@ def delete(request, todo_id):
         todo.delete()
         messages.success(request, "メモを削除しました。")
         return redirect("work09:todo")
+        

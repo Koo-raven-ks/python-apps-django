@@ -7,5 +7,15 @@
 </head>
 <body>
     <h1>TODOアプリ</h1>
+    <h2>タスクの編集</h2>
+    <form method="post">
+        {% csrf_token %}
+        <label for="taskMei">タスク名</label>
+        <input type="text" name="taskMei" id="taskMei" size="50" required>
+        <label for="timeKigen">期限日</label>
+        <input type="datetime-local" name="timeKigen" id="timeKigen" required>
+        <button type="submit" class="hsBtn">編集</button>
+    </form>
+    <button type="submit" class="mit">削除</button>
 </body>
 </html>
