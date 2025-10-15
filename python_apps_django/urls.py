@@ -25,4 +25,6 @@ urlpatterns = [
     path("work05_test/", include("work05_test.urls")),
     path("work06/", include("work06.urls")),
     path("work07/", include("work07.urls")),
+    path("work_08/", include("work_08.urls")),
+    path("work09/", include("work09.urls")),
 ]

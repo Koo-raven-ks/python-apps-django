@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>toDoApp</title>
+</head>
+
+<body>
+    <h1>TODOアプリ</h1>
+    <h2>新しいタスクを追加</h2>
+    <form method="post">
+        {% csrf_token %}
+        <label for="taskName">タスク名</label><br>
+        <input type="text" name="taskName" id="taskName" size="50" required><br>
+        <label for="timeLimit">期限日</label><br>
+        <input type="datetime-local" name="timeLimit" id="timeLimit" required><br>
+        <button type="submit">登録</button>
+    </form>
+    <h2>TODO一覧</h2>
+    {% if todos %}
+    <ul>
+        {% for todo in todos %}
+        <li>
+            <strong>{{ todo.title }}</strong><br>
+            {{ todo.timeLimit|linebreaksbr }}<br>
+            <form method="post" action="{% url 'work09:delete' todo.id %}" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit" class="mit">削除</button>
+            </form>
+        </li>
+
+        <!-- 🔸 区切り線（最後の要素には出さない） -->
+        {% if not forloop.last %}
+        <hr>
+        {% endif %}
+
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>メモはまだありません。</p>
+    {% endif %}
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="{% static 'work_08/top.css' %}">
+    <title>メモアプリ</title>
+</head>
+
+<body>
+    <h2>メモアプリ</h2>
+
+    <!-- 作成ページへのリンク -->
+    <p class="Botan"><a href="{% url 'work_08:crtmemo' %}">作成</a></p>
+
+    <!-- メモ一覧表示 -->
+    <p>メモ一覧表示</p>
+    {% if memos %}
+    <ul>
+        {% for memo in memos %}
+        <li>
+            <strong>{{ memo.title }}</strong><br>
+            {{ memo.content|linebreaksbr }}<br>
+            <form method="post" action="{% url 'work_08:delete' memo.id %}" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit" class="mit">削除</button>
+            </form>
+        </li>
+
+        <!-- 🔸 区切り線（最後の要素には出さない） -->
+        {% if not forloop.last %}
+        <hr>
+        {% endif %}
+
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>メモはまだありません。</p>
+    {% endif %}
+
+</html>

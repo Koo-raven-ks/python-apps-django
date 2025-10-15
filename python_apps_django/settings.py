@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     "work05_test",
     "work06",
     "work07",
+    "work_08",
+    "work09",
 ]
 
 MIDDLEWARE = [
@@ -78,8 +80,12 @@ WSGI_APPLICATION = "python_apps_django.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": "work_08",
+        "USER": "root",
+        "PASSWORD": "koodesu22",
+        "HOST": "localhost",
+        "PORT": "3306",
     }
 }
 
@@ -89,7 +95,10 @@ DATABASES = {
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
+        "NAME": (
+            "django.contrib.auth.password_validation."
+            "UserAttributeSimilarityValidator"
+        ),
     },
     {
         "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
