@@ -1,0 +1,27 @@
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+body{
+    text-align: center;
+}
+
+li.completed {
+    background-color: #e0ffe0; /* 完了時は薄い緑 */
+}
+li {
+    background-color: #ffe0e0; /* 未完了時は薄い赤 */
+    list-style-type: none;
+}
+
+ul{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+

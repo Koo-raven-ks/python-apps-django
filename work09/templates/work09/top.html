@@ -24,25 +24,35 @@
     {% if todos %}
     <ul>
         {% for todo in todos %}
-        <li>
-            <strong>{{ todo.title }}</strong><br>
-            {{ todo.timeLimit|linebreaksbr }}<br>
+        <li class="{% if todo.is_completed %}completed{% endif %}">
+            <strong>{{ todo.title }}</strong>
+            {{ todo.timeLimit|linebreaksbr }}
+            {% if todo.is_completed %}
+            <span style="color:green;">[完了]</span>
+            {% else %}
+            <span style="color:red;">[未完了]</span>
+            {% endif %}
+            <a href="{% url 'work09:edit' todo.id %}" class="editBtn">編集</a>
             <form method="post" action="{% url 'work09:delete' todo.id %}" style="display:inline;">
                 {% csrf_token %}
                 <button type="submit" class="mit">削除</button>
             </form>
+            <form action="{% url 'work09:fin' todo.id %}" method="post" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit" class="finish">
+                    {% if todo.is_completed %}未完了にする{% else %}完了{% endif %}
+                </button>
+            </form>
         </li>
-
-        <!-- 🔸 区切り線（最後の要素には出さない） -->
         {% if not forloop.last %}
-        <hr>
-        {% endif %}
-
+        <hr>{% endif %}
         {% endfor %}
+
     </ul>
     {% else %}
     <p>メモはまだありません。</p>
     {% endif %}
+    <script src="{% static 'work09/js/top.js' %}"></script>
 </body>
 
 </html>

@@ -5,6 +5,7 @@ app_name = "work09"
 
 urlpatterns = [
     path("", views.todo, name="todo"),
-    path("todohs/", views.todohs, name="todohs"),
+    path("edit/<int:todo_id>/", views.edit, name="edit"),
     path("delete/<int:todo_id>/", views.delete, name="delete"),
+    path("fin/<int:todo_id>/", views.fin, name="fin")
 ]
