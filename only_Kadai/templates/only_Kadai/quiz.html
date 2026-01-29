@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>クイズに挑戦！</title>
+    <link rel="stylesheet" href="{% static 'only_Kadai/css/style.css' %}">
+</head>
+<body>
+    <div class="container quiz-container">
+        <div class="quiz-card">
+            <div class="quiz-header">
+                <h2>🎯 クイズに挑戦！</h2>
+                <div class="question-badge">問題</div>
+            </div>
+            
+            <div class="question-box">
+                <p class="question-text">{{ question.text }}</p>
+            </div>
+            
+            <form method="post" class="answer-form">
+                {% csrf_token %}
+                <input type="hidden" name="question_id" value="{{ question.id }}">
+                
+                <div class="input-group">
+                    <input type="text" 
+                           name="user_answer" 
+                           placeholder="あなたの解答を入力してください..." 
+                           autocomplete="off"
+                           required>
+                    <span class="input-line"></span>
+                </div>
+                
+                <button type="submit" class="submit-quiz-btn">
+                    <span>🚀 送信</span>
+                    <div class="btn-wave"></div>
+                </button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

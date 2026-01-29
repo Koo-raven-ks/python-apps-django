@@ -8,12 +8,9 @@ def signup(request):
     if request.method == "POST":
         form = SignUpForm(request.POST)
         if form.is_valid():
-            user = form.save()
-            username = form.cleaned_data.get("username")
-            password = form.cleaned_data.get("password1")
-            user = authenticate(username=username, password=password)
+            user = form.save()  # ユーザー作成
             login(request, user)
-            return redirect("home")  # ホームページなどにリダイレクト
+            return redirect("top")  # ホームページなどにリダイレクト
     else:
         form = SignUpForm()
     return render(request, "registration/signup.html", {"form": form})

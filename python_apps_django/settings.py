@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     "work07",
     "work_08",
     "work09.apps.Work09Config",
+    "only_Kadai",
 ]
 
 MIDDLEWARE = [
